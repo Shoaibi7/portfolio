@@ -1,4 +1,4 @@
-import { journey, moreWork } from "@/data/profile";
+import { codezila, journey, moreWork } from "@/data/profile";
 import { ArrowUpRightIcon } from "@/components/ui/icons";
 import { Container, SectionHeading } from "@/components/ui/primitives";
 
@@ -9,13 +9,13 @@ export function Journey() {
         <SectionHeading
           id="journey-title"
           eyebrow="Engineering journey"
-          title="From full-stack foundations to AI-integrated products."
-          intro="Business software came first: CRMs, admin systems, APIs and real-time features. AI work builds on that foundation."
+          title="From full-stack foundations to AI-integrated business systems."
+          intro="Business software came first: CRMs, admin systems, APIs and real-time features. Backend architecture, automation and AI work build on that foundation."
         />
 
-        <ol className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-5">
+        <ol className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
           {journey.map((step, i) => (
-            <li key={step.title} className={i === journey.length - 1 ? "bg-accent-soft p-5" : "bg-surface p-5"}>
+            <li key={step.title} className={i === journey.length - 1 ? "bg-accent-soft p-5 sm:col-span-2 lg:col-span-1" : "bg-surface p-5"}>
               <p className="font-mono text-xs text-ink-3">{step.period}</p>
               <h3 className="mt-2 font-semibold tracking-tight">{step.title}</h3>
               {step.org && <p className="text-sm text-accent">{step.org}</p>}
@@ -23,6 +23,26 @@ export function Journey() {
             </li>
           ))}
         </ol>
+
+        <aside
+          aria-label="Team work"
+          className="mt-4 flex flex-col gap-3 rounded-xl border border-line bg-surface px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-8"
+        >
+          <p className="max-w-3xl text-sm leading-relaxed text-ink-2">
+            <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">Team work · </span>
+            {codezila.body}
+          </p>
+          <a
+            href={codezila.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-ink-2 hover:text-accent"
+          >
+            code-zila.com
+            <ArrowUpRightIcon width={15} height={15} />
+            <span className="sr-only">(Codezila website, opens in a new tab)</span>
+          </a>
+        </aside>
 
         <div className="mt-20">
           <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">Other things I&apos;ve built</h3>

@@ -3,7 +3,7 @@ import { Container, Eyebrow } from "@/components/ui/primitives";
 
 const facts = [
   { label: "Based in", value: site.location },
-  { label: "Focus", value: "AI-integrated SaaS, automation, backend systems" },
+  { label: "Focus", value: "Business workflow automation, backend systems, AI integration" },
   { label: "Open to", value: "Freelance, contract and full-time roles" },
 ];
 
@@ -27,22 +27,26 @@ export function About() {
         </div>
         <div className="space-y-5 text-[17px] leading-relaxed text-ink-2 lg:col-span-7 lg:pt-8">
           <p>
-            I&apos;m Muhammad Shoaib, a full-stack engineer based in Pakistan. I build web applications, APIs,
-            CRM and business systems, and automation.
+            I&apos;m Muhammad Shoaib, a full-stack engineer based in Pakistan. I started in full-stack web development
+            with Laravel, JavaScript and React, then moved steadily deeper into backend architecture, automation and
+            AI-integrated systems. Today I work across the product stack, with a particular focus on software that
+            automates real business workflows.
           </p>
           <p>
-            I started with traditional full-stack development in Laravel, JavaScript and React, and have since moved
-            into Python backend engineering, LLM integrations, RAG and automated workflows.
+            That means the everyday problems businesses run into: manual operations work, sales pipelines and CRM
+            data, customer communication, booking and approval flows, internal tools, and the documents and knowledge
+            a team depends on.
           </p>
           <p>
-            What interests me most is the engineering around AI. Calling a model API is the easy part. The real work
-            is the authentication, databases, queues, workers, safeguards and user experience that turn a model&apos;s
-            capabilities into software people can rely on.
+            AI helps with many of these, but only with solid engineering around it: authentication, databases,
+            queues, workers, safeguards and an interface people can actually use. I didn&apos;t trade traditional
+            engineering for AI. My work combines the two.
           </p>
           <p>
-            My recent work includes <span className="font-medium text-ink">HireSignal</span>, an evidence-backed
-            candidate-screening platform, and <span className="font-medium text-ink">LeadForge AI</span>, a lead
-            discovery, CRM and outreach automation system.
+            My recent projects show what that looks like in practice:{" "}
+            <span className="font-medium text-ink">HireSignal</span>, an evidence-backed candidate-screening platform,
+            and <span className="font-medium text-ink">LeadForge AI</span>, a lead discovery, CRM and outreach
+            automation system.
           </p>
         </div>
       </Container>

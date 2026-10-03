@@ -48,17 +48,24 @@ export const journey: JourneyStep[] = [
     body: "Developed and maintained production Laravel applications, including a school CRM and an inventory system, with REST APIs for integrations and internal tooling.",
   },
   {
-    period: "2024 – present",
+    // End date not confirmed in any source: shown as a start year only.
+    period: "From 2024",
     title: "Full Stack Developer",
     org: "Cyberify Ltd",
-    body: "Client applications across Laravel, FastAPI and React/Next.js: API design, authentication, real-time features with Laravel Reverb, S3 file storage, and AI chatbots and lead-automation systems.",
+    body: "Worked on client applications across Laravel, FastAPI and React/Next.js: API design, authentication, real-time features with Laravel Reverb, S3 file storage, and AI chatbots and lead-automation systems.",
   },
   {
-    period: "2025 – 2026",
-    title: "AI-integrated products",
-    body: "RAG experiments, then HireSignal and LeadForge AI: complete systems around LLMs, with queues, workers, safety controls and measured results.",
+    period: "2025 – now",
+    title: "AI-integrated business systems",
+    body: "RAG experiments, then HireSignal and LeadForge AI: complete systems around LLMs, with queues, workers, safety controls and measured results. Now working independently.",
   },
 ];
+
+export const codezila = {
+  name: "Codezila",
+  href: "https://code-zila.com/",
+  body: "Alongside my own projects, I'm also involved in building Codezila with a small software engineering team, working across custom SaaS, business automation and AI-integrated systems. Work shown on the Codezila site is the team's, not all of it built by me personally.",
+};
 
 export type MoreWorkGroup = {
   title: string;

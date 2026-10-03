@@ -9,7 +9,7 @@ export function Capabilities() {
           id="capabilities-title"
           eyebrow="Capabilities"
           title="The whole stack an AI product needs."
-          intro="Interfaces, APIs, data, queues, safeguards and the model integration, built to work together."
+          intro="What it takes to turn a business workflow into reliable software: interfaces, APIs, data, queues, safeguards and AI integration, built to work together."
         />
         <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((group, i) => (
@@ -28,7 +28,7 @@ export function Capabilities() {
           ))}
           <div className="flex flex-col justify-end bg-subtle p-6 sm:p-7">
             <p className="text-[15px] leading-relaxed text-ink-2">
-              I didn&apos;t leave traditional engineering for AI. I use it to make AI features reliable.
+              Most of the work in an AI feature isn&apos;t the model call. It&apos;s everything around it.
             </p>
           </div>
         </div>

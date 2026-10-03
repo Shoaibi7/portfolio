@@ -8,7 +8,7 @@ export const site = {
   // Set NEXT_PUBLIC_SITE_URL at build time once the final domain is known.
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://muhammad-shoaib.pages.dev").replace(/\/$/, ""),
   location: "Multan, Pakistan",
-  email: "imshoaibdev@gmail.com",
+  email: "m.shoaib2k15@gmail.com",
   github: "https://github.com/Shoaibi7",
   linkedin: "https://www.linkedin.com/in/muhammad-shoaib-104350186/",
   availability: ["Freelance", "Contract", "Full-time"],
