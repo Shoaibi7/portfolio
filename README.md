@@ -91,7 +91,7 @@ Raw captures often contain personal data, so they **stay outside the repository*
 
 ## Deployment (free)
 
-The build output is plain static files in `out/`. Set `NEXT_PUBLIC_SITE_URL` to the final URL so canonical links, the sitemap and OG tags are correct. Without it, the build falls back to `https://muhammad-shoaib.pages.dev`.
+The build output is plain static files in `out/`. Set `NEXT_PUBLIC_SITE_URL` to the final URL so canonical links, the sitemap and OG tags are correct. Without it, the build falls back to `https://portfolio.imshoaibdev.workers.dev`. A missing `https://` is added automatically.
 
 ### Cloudflare Pages (recommended)
 
