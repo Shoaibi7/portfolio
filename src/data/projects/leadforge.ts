@@ -1,5 +1,15 @@
 import type { Project } from "@/types/project";
 
+const shot = (name: string, alt: string, width: number, height: number, caption?: string) => ({
+  src: `/images/leadforge/${name}.webp`,
+  alt,
+  width,
+  height,
+  caption,
+});
+
+const DEMO = "Captured from a local run with fictional demo data.";
+
 export const leadforge: Project = {
   slug: "leadforge",
   number: "02",
@@ -8,18 +18,16 @@ export const leadforge: Project = {
   category: "Lead discovery · CRM · Outreach automation",
   summary:
     "Finds local businesses on Google Maps, keeps every lead fact traceable to its source, and sends campaigns through a fault-tolerant background pipeline with a safe simulation mode.",
-  status: "Completed engineering build · pilot-deployment preparation",
+  status: "Engineering build · not deployed",
   stack: ["NestJS", "Next.js", "TypeScript", "MongoDB", "Redis + Bull", "Playwright", "Gemini / OpenRouter"],
   highlights: [
-    "Measured a 90% company-name error rate in live Maps validation, then redesigned extraction to 0/50",
-    "Provenance-first data: no guessed email addresses, ever",
-    "Durable campaign delivery with atomic claims, retry classification and recovery",
-    "644 automated tests across backend unit, e2e and frontend",
+    "Found a 90% company-name error rate in live Maps validation, then redesigned extraction to 0/50",
+    "Provenance-first CRM: no guessed email addresses, ever",
+    "Durable campaign delivery with retries, recovery and a safe simulation mode",
   ],
   visual: {
-    type: "comparison",
-    before: { value: "45/50", label: "wrong company names", context: "Original scraper, live Google Maps validation sample" },
-    after: { value: "0/50", label: "wrong company names", context: "After the identity-safe redesign, same validation method" },
+    type: "screenshot",
+    shot: shot("crm", "LeadForge Leads CRM listing demo businesses with owner names, confirmed email provenance, industry and pipeline status.", 1680, 900),
   },
   repos: [{ label: "Frontend repository", href: "https://github.com/Shoaibi7/leadforge-frontend" }],
   privateRepoNote: "Backend source is private.",
@@ -41,6 +49,13 @@ export const leadforge: Project = {
           paragraphs: [
             "LeadForge automates small-business prospecting end to end: discover businesses on Google Maps, verify which business each fact belongs to, enrich and store leads with provenance, analyse websites, draft outreach with an LLM, and deliver campaigns through a background pipeline.",
             "It is not just a scraper. Most of the engineering went into making automated data and automated email trustworthy: proving data belongs to the right business, never inventing contact details and never sending the same email twice.",
+          ],
+        },
+        {
+          type: "screenshots",
+          shots: [
+            shot("overview", "LeadForge overview dashboard with lead, campaign and conversion totals, lead status distribution and recent campaigns.", 1680, 560, `Overview dashboard. ${DEMO}`),
+            shot("crm", "LeadForge Leads CRM with search, filters, email provenance badges and pipeline statuses.", 1680, 900, `Leads CRM with email provenance on every contact. ${DEMO}`),
           ],
         },
       ],
@@ -85,6 +100,12 @@ export const leadforge: Project = {
             { title: "Operations", body: "Health and readiness probes, an operator status endpoint, structured logs without personal data." },
           ],
         },
+        {
+          type: "screenshots",
+          shots: [
+            shot("maps-scraper", "LeadForge Google Maps Lead Scraper settings with a search query, listing limit and an explanation of the scraping and enrichment pipeline.", 1439, 520, "Maps discovery runs as a background job; results land in the CRM only after identity checks."),
+          ],
+        },
       ],
     },
     {
@@ -102,6 +123,12 @@ export const leadforge: Project = {
             { label: "Implement", title: "Bounded, condition-based waits", body: "Page-global selectors were removed and fixed sleeps replaced with bounded waits on real conditions. Real-browser tests on a simulated Maps page cover stale panels, same-name panels, slow panels, Sponsored results and scrolling." },
             { label: "Validate", title: "A second live run", body: "Same method, new run: 0 of 50 company names wrong, 0 of 199 verified fields contaminated, and every organic result verified." },
           ],
+        },
+        {
+          type: "comparison",
+          title: "Company-name errors per 50 leads",
+          before: { value: "45/50", label: "wrong company names", context: "Original scraper, live validation sample" },
+          after: { value: "0/50", label: "wrong company names", context: "After the identity-safe redesign, same method" },
         },
         {
           type: "metrics",
@@ -180,11 +207,17 @@ export const leadforge: Project = {
           columns: 2,
           items: [
             { title: "Outreach kill switch", body: "Real outreach requires an explicit flag. With SMTP configured and the flag unset, an end-to-end test proves a full campaign never calls the email provider." },
-            { title: "Simulation mode", body: "Simulated deliveries are recorded, counted and labelled separately in the API and UI. Email logs contain metadata only: no recipients, bodies or tokens." },
+            { title: "Simulation mode", body: "Simulated deliveries are recorded, counted and labelled separately in the API and UI. Server email logs contain metadata only: no recipients, bodies or tokens." },
             { title: "SSRF-safe fetching", body: "All outbound requests, including headless-browser sub-requests and redirects, go through a client with DNS pinning and server-side redirect validation." },
             { title: "Proxy-aware rate limiting", body: "Explicit trusted-proxy configuration gives separate limits per real client IP and ignores forged forwarding headers." },
             { title: "Fail-fast production config", body: "Placeholder secrets, open CORS or missing settings stop startup instead of running insecurely." },
             { title: "Signed tracking links", body: "HMAC-signed click links prevent open redirects; CSV uploads are size-limited and the reply webhook is disabled unless a secret is set." },
+          ],
+        },
+        {
+          type: "screenshots",
+          shots: [
+            shot("campaign-simulation", "LeadForge campaign analytics showing a 'Simulation only' notice and ten deliveries marked SIMULATED: not sent because outreach email is disabled.", 1024, 772, `A campaign run with outreach disabled: every delivery is recorded and clearly marked as simulated. ${DEMO}`),
           ],
         },
       ],

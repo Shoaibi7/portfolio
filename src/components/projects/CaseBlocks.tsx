@@ -1,6 +1,6 @@
 import type { Block, CaseSection } from "@/types/project";
 import { cn } from "@/components/ui/primitives";
-import { FlowDiagram, MetricGrid, ScreenshotFigure } from "./visuals";
+import { ComparisonVisual, FlowDiagram, MetricGrid, ScreenshotFigure } from "./visuals";
 
 function BlockView({ block }: { block: Block }) {
   switch (block.type) {
@@ -98,6 +98,9 @@ function BlockView({ block }: { block: Block }) {
         </figure>
       );
 
+    case "comparison":
+      return <ComparisonVisual title={block.title} before={block.before} after={block.after} />;
+
     case "callout":
       return (
         <div className="max-w-3xl rounded-xl border border-line bg-subtle p-6">
@@ -124,7 +127,9 @@ export function CaseSectionView({ section }: { section: CaseSection }) {
       {section.intro && <p className="mt-3 max-w-3xl text-lg leading-relaxed text-ink-2">{section.intro}</p>}
       <div className="mt-8 space-y-10">
         {section.blocks.map((block, i) => (
-          <BlockView key={i} block={block} />
+          <div key={i} data-reveal>
+            <BlockView block={block} />
+          </div>
         ))}
       </div>
     </section>

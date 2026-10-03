@@ -8,7 +8,7 @@ export const rag: Project = {
   category: "Retrieval-Augmented Generation · Python",
   summary:
     "A compact RAG pipeline that indexes a folder of documents and answers natural-language questions from the retrieved context, returning the source files it used.",
-  status: "Learning project · local pipeline",
+  status: "Learning project",
   stack: ["Python", "LangChain", "Chroma", "bge-small embeddings", "Ollama (phi3)", "FastAPI"],
   highlights: [
     "Local embeddings and a persisted Chroma vector store: no paid API needed",

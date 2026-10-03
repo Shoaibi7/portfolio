@@ -21,16 +21,15 @@ export const hiresignal: Project = {
   number: "01",
   name: "HireSignal",
   tagline: "See the signal behind every candidate.",
-  category: "Applicant tracking · Evidence-backed screening SaaS",
+  category: "Applicant tracking · AI screening",
   summary:
     "An applicant tracking and candidate-screening platform for small and mid-sized companies. AI surfaces the evidence; recruiters make the hiring decision.",
-  status: "Pilot-ready · pre-launch engineering build",
+  status: "Pilot-ready · pre-launch",
   stack: ["FastAPI", "Python 3.12", "PostgreSQL", "Redis + ARQ", "React", "TypeScript", "OpenRouter", "S3-compatible storage"],
   highlights: [
-    "Gate → Align screening with deterministic routing in code, not in the model",
-    "AI never rejects on its own in the default safe mode",
-    "Worker retries, stuck-screening recovery and audited recruiter decisions",
-    "439 backend tests and a 41-case screening regression benchmark",
+    "Evidence-backed screening; routing decided in code, not by the model",
+    "AI never rejects on its own: failures and missing evidence go to a person",
+    "Background workers with retries and recovery; 439 backend tests",
   ],
   visual: {
     type: "screenshot",

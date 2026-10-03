@@ -10,9 +10,9 @@ const channels = [
 
 export function Contact() {
   return (
-    <section id="contact" aria-labelledby="contact-title" className="scroll-mt-16 py-20 sm:py-28">
+    <section id="contact" aria-labelledby="contact-title" className="scroll-mt-16 py-20 sm:py-24">
       <Container>
-        <div className="overflow-hidden rounded-3xl bg-ink px-6 py-12 text-white sm:px-12 sm:py-16">
+        <div data-reveal className="overflow-hidden rounded-3xl bg-ink px-6 py-12 text-white sm:px-12 sm:py-16">
           <p className="font-mono text-xs uppercase tracking-[0.14em] text-white/60">Contact</p>
           <h2 id="contact-title" className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
             Have a product, an automation problem or an engineering role?

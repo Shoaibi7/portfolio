@@ -2,12 +2,15 @@
 //
 // Raw captures stay OUTSIDE the repository (they can contain personal data).
 // Usage:  SCREENSHOT_DIR="C:/path/to/raw" npm run images
+// Entries whose source file is not in SCREENSHOT_DIR are skipped, so captures kept in
+// different folders can be processed in separate runs.
 //
 // Each entry lists its source file, output path, optional crop and the
 // rectangles to blur (in source pixels) before anything is written.
 
 import sharp from "sharp";
 import { mkdir } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import path from "node:path";
 
 const SOURCE_DIR = process.env.SCREENSHOT_DIR;
@@ -35,6 +38,11 @@ const shots = [
     crop: { left: 0, top: 60, width: 1100, height: 560 },
     redact: [{ left: 48, top: 113, width: 164, height: 24 }],
   },
+  // LeadForge: captured locally with fictional demo data, simulated email and no AI keys.
+  { src: "dashboard_leads.png", out: "leadforge/crm" },
+  { src: "dashboard.png", out: "leadforge/overview", crop: { left: 0, top: 0, width: 1680, height: 560 } },
+  { src: "campaign_analytics.png", out: "leadforge/campaign-simulation", crop: { left: 328, top: 66, width: 1024, height: 772 } },
+  { src: "dashboard_scraper.png", out: "leadforge/maps-scraper", crop: { left: 241, top: 0, width: 1439, height: 520 } },
 ];
 
 async function blurRegions(input, regions) {
@@ -56,7 +64,12 @@ async function run() {
   }
 
   for (const shot of shots) {
-    let buffer = await sharp(path.join(SOURCE_DIR, shot.src)).png().toBuffer();
+    const source = path.join(SOURCE_DIR, shot.src);
+    if (!existsSync(source)) {
+      console.log(`skip ${shot.out}: ${shot.src} not in SCREENSHOT_DIR`);
+      continue;
+    }
+    let buffer = await sharp(source).png().toBuffer();
     if (shot.crop) buffer = await sharp(buffer).extract(shot.crop).png().toBuffer();
     buffer = await blurRegions(buffer, shot.redact);
 

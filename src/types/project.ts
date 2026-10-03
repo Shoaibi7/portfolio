@@ -23,7 +23,8 @@ export type Block =
   | { type: "screenshots"; shots: Screenshot[] }
   | { type: "timeline"; steps: { label: string; title: string; body: string }[] }
   | { type: "table"; columns: string[]; rows: string[][]; caption?: string }
-  | { type: "callout"; title: string; body: string[] };
+  | { type: "callout"; title: string; body: string[] }
+  | { type: "comparison"; title: string; before: Metric; after: Metric };
 
 export type CaseSection = {
   id: string;
@@ -34,8 +35,7 @@ export type CaseSection = {
 
 export type ProjectVisual =
   | { type: "screenshot"; shot: Screenshot }
-  | { type: "flow"; steps: FlowStep[] }
-  | { type: "comparison"; before: Metric; after: Metric };
+  | { type: "flow"; steps: FlowStep[] };
 
 export type RepoLink = { label: string; href: string };
 

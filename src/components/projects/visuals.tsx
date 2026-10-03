@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import type { FlowStep, Metric, Screenshot } from "@/types/project";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { cn } from "@/components/ui/primitives";
@@ -28,7 +29,7 @@ export function BrowserFrame({
         height={shot.height}
         sizes={sizes}
         priority={priority}
-        className="h-auto w-full"
+        className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.015]"
       />
     </div>
   );
@@ -71,11 +72,11 @@ export function FlowDiagram({ steps, caption }: { steps: FlowStep[]; caption?: s
 /** Compact pipeline used as a card visual. */
 export function FlowStrip({ steps }: { steps: FlowStep[] }) {
   return (
-    <div className="flex h-full flex-col justify-center rounded-xl border border-line bg-surface p-6 shadow-card sm:p-8">
+    <div data-reveal className="flex h-full flex-col justify-center rounded-xl border border-line bg-surface p-6 shadow-card sm:p-8">
       <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">Pipeline</p>
       <ol className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-3">
         {steps.map((step, i) => (
-          <li key={step.label} className="flex items-center gap-2">
+          <li key={step.label} className="step-in flex items-center gap-2" style={{ "--i": i } as CSSProperties}>
             <span
               className={cn(
                 "rounded-lg border px-3 py-1.5 font-mono text-[12.5px]",
@@ -94,15 +95,15 @@ export function FlowStrip({ steps }: { steps: FlowStep[] }) {
   );
 }
 
-export function ComparisonVisual({ before, after }: { before: Metric; after: Metric }) {
+export function ComparisonVisual({ title, before, after }: { title: string; before: Metric; after: Metric }) {
   const rows = [
     { tone: "warn" as const, tag: "Before", metric: before, pct: ratio(before.value) },
     { tone: "good" as const, tag: "After", metric: after, pct: ratio(after.value) },
   ];
   return (
-    <div className="flex h-full flex-col justify-center rounded-xl border border-line bg-surface p-6 shadow-card sm:p-8">
+    <div data-reveal className="max-w-3xl rounded-xl border border-line bg-surface p-6 shadow-card sm:p-8">
       <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">Live Maps validation</p>
-      <p className="mt-2 text-lg font-semibold tracking-tight">Company-name errors per 50 leads</p>
+      <p className="mt-2 text-lg font-semibold tracking-tight">{title}</p>
       <dl className="mt-6 space-y-5">
         {rows.map((row) => (
           <div key={row.tag}>
@@ -121,7 +122,7 @@ export function ComparisonVisual({ before, after }: { before: Metric; after: Met
             </div>
             <div className="mt-2 h-2 overflow-hidden rounded-full bg-subtle" aria-hidden>
               <div
-                className={cn("h-full rounded-full", row.tone === "warn" ? "bg-warn/80" : "bg-good")}
+                className={cn("grow-bar h-full rounded-full", row.tone === "warn" ? "bg-warn/80" : "bg-good")}
                 style={{ width: `${Math.max(row.pct * 100, 1.5)}%` }}
               />
             </div>

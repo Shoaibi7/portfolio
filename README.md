@@ -33,13 +33,14 @@ src/
     opengraph-image.tsx   Site social preview (generated at build time)
     sitemap.ts, robots.ts, icon.svg, not-found.tsx
   components/
-    layout/               Navbar (accessible mobile menu), Footer
-    sections/             Hero, FeaturedWork, Capabilities, Journey, About, Contact
+    layout/               Navbar (accessible mobile menu), Footer, RevealObserver (scroll animations)
+    sections/             Hero, FeaturedWork, Solutions, Experience, About, Contact
     projects/             ProjectCard, CaseBlocks (case-study renderer), visuals
     ui/                   Buttons, tags, headings, inline SVG icons
   data/
     site.ts               Name, links, email, site URL, navigation
-    profile.ts            Capabilities, journey timeline, "other things I've built"
+    profile.ts            Experience, education, toolkit, Codezila note, earlier repos
+    solutions.ts          Business solutions (each linked to the work that proves it)
     projects/             One file per case study + index (order, lookup)
   lib/                    Image loader for static export, OG image renderer
   types/project.ts        Typed content model for projects and case-study blocks
@@ -54,7 +55,8 @@ public/
 ## Updating content
 
 - **Profile, links and email:** `src/data/site.ts`.
-- **Capabilities, journey and the older-projects list:** `src/data/profile.ts`.
+- **Experience, education, toolkit and earlier repos:** `src/data/profile.ts`.
+- **Business solutions:** `src/data/solutions.ts`.
 - **A case study:** edit `src/data/projects/<project>.ts`. A case study is a list of `sections`, and each section is a list of typed `blocks`:
   - `prose`
   - `points` (a card grid)
