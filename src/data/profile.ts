@@ -48,8 +48,7 @@ export const journey: JourneyStep[] = [
     body: "Developed and maintained production Laravel applications, including a school CRM and an inventory system, with REST APIs for integrations and internal tooling.",
   },
   {
-    // End date not confirmed in any source: shown as a start year only.
-    period: "From 2024",
+    period: "2024 – 2026",
     title: "Full Stack Developer",
     org: "Cyberify Ltd",
     body: "Worked on client applications across Laravel, FastAPI and React/Next.js: API design, authentication, real-time features with Laravel Reverb, S3 file storage, and AI chatbots and lead-automation systems.",

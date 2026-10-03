@@ -107,6 +107,17 @@ The build output is plain static files in `out/`. Set `NEXT_PUBLIC_SITE_URL` to 
 5. Deploy. `public/_headers` sets the content type for the social images and adds caching and security headers.
 6. Optionally add a custom domain under **Custom domains**, then update `NEXT_PUBLIC_SITE_URL` and redeploy.
 
+### Cloudflare Workers (if the project was created as a Worker)
+
+Cloudflare's dashboard may create a **Worker** instead of a Pages project. `wrangler.jsonc` in the repo root makes this work: it deploys `out/` as static assets, with no server code. Without the file, `wrangler deploy` tries to convert the app to a server build with OpenNext, and that fails on a static export.
+
+Use these settings:
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Build variable: `NEXT_PUBLIC_SITE_URL` = `https://portfolio.<your-subdomain>.workers.dev`, or your custom domain
+
+`_headers` is supported here too.
+
 ### Netlify
 
 Use build command `npm run build` and publish directory `out`, with the same environment variables. `_headers` is supported.

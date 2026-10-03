@@ -1,0 +1,11 @@
+// Cloudflare Workers deployment: serves the static export in out/ (no server code).
+// Build: `npm run build`  ·  Deploy: `npx wrangler deploy`
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}
